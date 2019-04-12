@@ -5,15 +5,17 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('checklogin');
+
 Route::get('/default.admin',function()
 {
 	return view('admin');
-});
-// Route::get('/index',function()
-// {	
-// 	return view('index');
-// });
+})->middleware('checklogin');
+
+Route::get('/index',function()
+{	
+	return view('index');
+})->middleware('checklogin');
 Route::get('/login',function()
 {
 	return view('login');
@@ -21,19 +23,16 @@ Route::get('/login',function()
 Route::get('/election',function()
 {
 	return view('election');
-});
-// Route::get('/cdashboard',function()
-// {
-// 	return view('cdashboard');
-// });
+})->middleware('checklogin');
+Route::get('/cdashboard',function()
+{
+	return view('cdashboard');
+})->middleware('checklogin');
 Route::get('/profile',function()
 {
 	return view('profile');
-});
-Route::get('/profile1',function()
-{
-	return view('profile1');
-});
+})->middleware('checklogin');
+
 
 Route::post('/insertvoter' ,'ApiController@insertvoterlist');
 Route::post('/insertcandidate','ApiController@insertcandidatelist');
