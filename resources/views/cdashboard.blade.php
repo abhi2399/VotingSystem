@@ -37,7 +37,7 @@
 				<img src="abhi.jpg" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Username</div>
+				<div class="profile-usertitle-name">{{$names}}</div>
 				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 			</div>
 			<div class="clear"></div>
@@ -139,7 +139,7 @@
 							<img src="abhi.jpg" class="img-rounded" alt="Cinque Terre" width="160px"; height="160px";>
 						<!-- Name-->
 								<div style="margin-top: 20px;">
-									<b>Abhishek Dadhich</b>
+									<b>{{$names}}</b>
 								</div>		
 						</div>
 						<form method="post">

@@ -29,7 +29,8 @@
 										<div class="login-panel panel panel-default">
 											<div class="panel-heading">Login As Voter</div>
 											<div class="panel-body">
-												<form role="form" action="/checkvoter" method="post">
+												<form role="form" action="/index" method="post">
+													
 													@csrf
 													<fieldset>
 														<div class="form-group">
@@ -57,7 +58,7 @@
 										<div class="login-panel panel panel-default">
 											<div class="panel-heading">Login As Candidate</div>
 											<div class="panel-body">
-												<form role="form" action="/checkcandidate" method="post">
+												<form role="form" action="/cdashboard" method="post">
 													@csrf
 													<fieldset>
 														<div class="form-group">

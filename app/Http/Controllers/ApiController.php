@@ -93,12 +93,15 @@ class ApiController extends Controller
     {   
         $email = $request->post('email');
         $password = $request->post('password');
-        
+
+        $checkname = voterlists::where('email',$email)->value('name');
         $checklogin = voterlists::where(['email'=>$email,'password'=>$password])->get();
-         
+       
+        $request->session()->flash('name',$checkname);
+        
         if(count($checklogin)>0)
-        {
-            return redirect('/index');
+        {   
+            return view('index')->with('names',$request->session()->get('name'));
         }
         else
         {
@@ -110,12 +113,15 @@ class ApiController extends Controller
     {   
         $email = $request->post('email');
         $password = $request->post('password');
-        
+
+        $checkname = candidatelists::where('email',$email)->value('name');
         $checklogin = candidatelists::where(['email'=>$email,'password'=>$password])->get();
          
+        $request->session()->flash('name',$checkname);
+        
         if(count($checklogin)>0)
         {
-            return redirect('/cdashboard');
+            return view('cdashboard')->with('names',$request->session()->get('name'));
         }
         else
         {
