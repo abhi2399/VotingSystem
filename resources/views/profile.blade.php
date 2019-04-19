@@ -15,7 +15,7 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		fetch('https://uinames.com/api/?amount=1&region=india&ext')
 		  .then(
 		    function(response) {
@@ -43,7 +43,7 @@
 		      	);
 		    }
 		  );
-	</script>
+	</script> -->
 </head>
 <body>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -61,20 +61,16 @@
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
-				<img class="pic img-responsive" alt="">
+				<img class="pic img-responsive" src="{{$name[0]['pic']}}">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name name"></div>
+				<div class="profile-usertitle-name">{{$name[0]['name']}}</div>
 				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="divider"></div>
-		<form role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-		</form>
+		
 		<ul class="nav menu">
 			<li><a href="/index"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 			<li class="active"><a href="/profile"><em class="fa fa-user">&nbsp;</em> Profile</a></li>
@@ -111,10 +107,10 @@
 					
 					<div class="panel-body">
 						<div class="col-md-4 mt-3">
-							<img class="pic img-rounded" alt="Cinque Terre" width="160px"; height="160px";>
+							<img class="pic img-rounded" src="{{$name[0]['pic']}}" alt="Cinque Terre" width="160px"; height="160px";>
 						<!-- Name-->
 								<div style="margin-top: 20px;">
-									<b class="name"></b>
+									<b class="name">{{$name[0]['name']}}</b>
 								</div>		
 						</div>
 						<div class="form-horizontal">
@@ -123,14 +119,14 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="email">Your E-mail:</label>
 									<div class="col-md-8" style="margin-top: 6px;">
-										<b class="email"></b>
+										<b class="email">{{$name[0]['email']}}</b>
 									</div>
 								</div>
                                 <!-- Password -->
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="email">Your Password:</label>
 									<div class="col-md-8" style="margin-top: 6px;">
-										<b class="pass"></b>
+										<b class="pass">{{$name[0]['password']}}</b>
 									</div>
 								</div>
 								
@@ -138,28 +134,23 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="message">Your DOB:</label>
 									<div class="col-md-8" style="margin-top: 6px;">
-										<b class="dob"></b>
+										<b class="dob">{{$name[0]['dob']}}</b>
 									</div>
 								</div>
                                 <!-- Gender -->
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="message">Your Gender:</label>
 									<div class="col-md-8" style="margin-top: 6px;">
-										<b class="gender"></b>
+										<b class="gender">{{$name[0]['gender']}}</b>
 									</div>
 								</div>
 								<!-- DOB -->
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="message">Your DOB:</label>
-									<div class="col-md-8" style="margin-top: 6px;">
-										<b>23-05-1998</b>
-									</div>
-								</div>
+								
                                 <!-- Phone Number -->
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="message">Your Phone Number:</label>
 									<div class="col-md-8" style="margin-top: 6px;">
-										<b class="number"></b>
+										<b class="number">{{$name[0]['number']}}</b>
 									</div>
 								</div>
 								<!-- Form actions -->								

@@ -13,8 +13,15 @@ class CheckLogin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle()
+    public function handle($request,Closure $next)
     {
-        return redirect('login');
+        
+
+        if (!$request->session()->exists('name')) {
+            // user value cannot be found in session
+            return redirect('login');
+        }
+
+        return $next($request);
     }
 }

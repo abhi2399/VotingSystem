@@ -32,20 +32,16 @@
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
-				<img src="abhi.jpg" class="img-responsive" alt="">
+				<img src="{{$name[0]['pic']}}" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Username</div>
+				<div class="profile-usertitle-name">{{ $name[0]['name'] }}</div>
 				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="divider"></div>
-		<form role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-		</form>
+		
 		<ul class="nav menu">
 			<li><a href="/index"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 			<li><a href="/profile"><em class="fa fa-user">&nbsp;</em> Profile</a></li>

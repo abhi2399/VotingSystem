@@ -13,6 +13,7 @@ use App\olderelections;
 use App\countings;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Database\Eloquent\Builder;
 
 class ApiController extends Controller
 {
@@ -49,7 +50,7 @@ class ApiController extends Controller
 
     	$candidate->election_name = request('name');
     	$candidate->can1 = request('name1');
-            $candidate->vote1 = 0;
+        $candidate->vote1 = 0;
         $candidate->email1 = request('email1');
         $candidate->bio1 = request('bio1');
         $candidate->pic1 = request('pic1');
@@ -62,7 +63,7 @@ class ApiController extends Controller
         $candidate->vote3 = 0;
         $candidate->email3 = request('email3');
         $candidate->bio3 = request('bio3');
-         $candidate->pic3 = request('pic3');
+        $candidate->pic3 = request('pic3');
           
     
     	$candidate->save();
@@ -94,14 +95,16 @@ class ApiController extends Controller
         $email = $request->post('email');
         $password = $request->post('password');
 
-        $checkname = voterlists::where('email',$email)->value('name');
+        
         $checklogin = voterlists::where(['email'=>$email,'password'=>$password])->get();
        
-        $request->session()->flash('name',$checkname);
+        
         
         if(count($checklogin)>0)
-        {   
-            return view('index')->with('names',$request->session()->get('name'));
+        {    
+             // dd($checklogin[0]['pic']);
+            $request->session()->put('name',$checklogin);
+            return view('index', ['name' => $request->session()->get('name')]);
         }
         else
         {
@@ -114,40 +117,20 @@ class ApiController extends Controller
         $email = $request->post('email');
         $password = $request->post('password');
 
-        $checkname = candidatelists::where('email',$email)->value('name');
+       
         $checklogin = candidatelists::where(['email'=>$email,'password'=>$password])->get();
          
-        $request->session()->flash('name',$checkname);
+       
         
         if(count($checklogin)>0)
         {
-            return view('cdashboard')->with('names',$request->session()->get('name'));
+             $request->session()->put('name',$checklogin);
+            return view('cdashboard')->with('name',$request->session()->get('name'));
         }
         else
         {
             return redirect('/login');
         }
     }
-
-    // public function validatevoter(Request $request)
-    // {
-        
-
-    //     $validator = Validator::make($request->all(), [
-    //         'email' => 'required|string|max:255',
-    //         'password' => 'required',
-    //     ]);
-    //     if($validator ->fails())
-    //     {
-    //         return redirect('/login')
-    //             ->withErrors($validator)
-    //             ->withInput();
-    //     }
-    //     else
-    //     {
-    //         return redirect('/checkvoter');
-    //     }
-    // }
-
   
 }

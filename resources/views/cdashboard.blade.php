@@ -34,20 +34,16 @@
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
-				<img src="abhi.jpg" class="img-responsive" alt="">
+				<img src="{{$name[0]['pic']}}" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">{{$names}}</div>
+				<div class="profile-usertitle-name">{{$name[0]['name']}}</div>
 				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="divider"></div>
-		<form role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-		</form>
+		
 		<ul class="nav menu">
 			
 			
@@ -136,10 +132,10 @@
 					
 					<div class="panel-body">
 						<div class="col-md-4 mt-3">
-							<img src="abhi.jpg" class="img-rounded" alt="Cinque Terre" width="160px"; height="160px";>
+							<img src="{{$name[0]['pic']}}" class="img-rounded" alt="Cinque Terre" width="160px"; height="160px";>
 						<!-- Name-->
 								<div style="margin-top: 20px;">
-									<b>{{$names}}</b>
+									<b>{{$name[0]['name']}}</b>
 								</div>		
 						</div>
 						<form method="post">
@@ -149,14 +145,14 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="email">Your E-mail:</label>
 										<div class="col-md-8">
-										<input class="form-control" id="email" type="email" placeholder="abhishekdadhich798@gmail.com">
+										<input class="form-control" id="email" type="email" value="{{$name[0]['email']}}">
 									    </div>
 									</div>
 	                                <!-- Password -->
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="email">Your Password:</label>
 										<div class="col-md-8">
-										<input class="form-control" id="name" type="Password" placeholder="qwertyuiop">
+										<input class="form-control" id="name" type="Password" value="{{$name[0]['password']}}">
 									    </div>
 									</div>
 									
@@ -164,7 +160,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="message">Your DOB:</label>
 										<div class="col-md-8">
-										<input class="form-control" id="DOB" type="number" placeholder="23-05-1998">
+										<input class="form-control" id="DOB" type="dob"  value="{{$name[0]['dob']}}">
 									    </div>
 									</div>
 	                                <!-- Gender -->
@@ -181,14 +177,14 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="message">Your Phone Number:</label>
 										<div class="col-md-8">
-										<input class="form-control" id="name" type="number" placeholder="7791853336">
+										<input class="form-control" id="name" type="text"  value="{{$name[0]['number']}}">
 									    </div>
 									</div>
 	                                <!-- bio-->
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="message">Your Bio:</label>
 										<div class="col-md-8">
-										<textarea class="form-control" id="message" name="message" placeholder="Good behaviour" rows="5"></textarea>
+										<textarea class="form-control" id="message" type="text" name="message"  value="{{$name[0]['biodata']}}" rows="5"></textarea>
 									    </div>
 									</div>
 									<!-- Form actions -->
