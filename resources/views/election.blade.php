@@ -32,10 +32,10 @@
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
-				<img src="{{$name[0]['pic']}}" class="img-responsive" alt="">
+				<img src="{{session('name')[0]['pic']}}" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">{{ $name[0]['name'] }}</div>
+				<div class="profile-usertitle-name">{{session('name')[0]['name']}}</div>
 				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 			</div>
 			<div class="clear"></div>
@@ -98,18 +98,18 @@
 				</div>
 			</div>
 		</div><!--/.row-->
-		
+	 
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-success">
 					<div class="panel-heading">
-						Lok Sabha Election
+						{{$c[0]['election_name']}}
 					</div>
 					<div class="panel-body">
 						<!-- First candidate-->
 						<div class="row">
 							<div class="col-md-3">
-							<img src="abhi.jpg" class="img-rounded" alt="Cinque Terre" width="140px"; height="140px"; style="margin-top: 15%; margin-left: 35px;">
+							<img src="{{$c[0]['pic1']}}" class="img-rounded" alt="Cinque Terre" width="140px"; height="140px"; style=" margin-left: 35px;">
 													
 							</div>
 							<form>
@@ -118,43 +118,29 @@
 									    <div class="form-group">
 											<label class="col-md-2 control-label" for="email">Name:</label>
 											<div class="col-md-8" style="margin-top: 6px;">
-												<b>Abhishek Dadhich</b>
+												<b>{{$c[0]['can1']}}</b>
 											</div>
 										</div>									
-																		
-										<!-- Won -->
-										<div class="form-group">
-											<label class="col-md-2 control-label" for="message">Won:</label>
-											<div class="col-md-8" style="margin-top: 6px;">
-												<b>5 Times</b>
-											</div>
-										</div>
-		                                <!-- Lost -->
-										<div class="form-group">
-											<label class="col-md-2 control-label" for="message">Lost:</label>
-											<div class="col-md-8" style="margin-top: 6px;">
-												<b>4 Times</b>
-											</div>
-										</div>
+										
 										<!-- Gender -->
 										<div class="form-group">
-											<label class="col-md-2 control-label" for="message">Gender:</label>
+											<label class="col-md-2 control-label" for="message">Email:</label>
 											<div class="col-md-8" style="margin-top: 6px;">
-												<b>Male</b>
+												<b>{{$c[0]['email1']}}</b>
 											</div>
 										</div>
 		                                <!-- Phone Number -->
 										<div class="form-group">
 											<label class="col-md-2 control-label" for="message">Bio:</label>
 											<div class="col-md-8" style="margin-top: 6px;">
-												<b>He has good behaviour also known as Baapu</b>
+												<b>{{$c[0]['bio1']}}</b>
 											</div>
 										</div>
 																											
 								</div>
 								<!-- Form actions -->
 								<div class="col-md-2" style="margin-top: 5%;">
-									<button type="submit" class="btn btn-md btn-primary">Vote</button>
+									<a href="/count/{{$c[0]['id']}}/vote1"><button type="button" class="btn btn-md btn-primary">Vote</button></a>
 								</div>
 							</form>
 						</div><!-- close row -->
@@ -162,7 +148,7 @@
 						<!-- second Candidate-->
 						<div class="row">
 							<div class="col-md-3">
-							<img src="abhi.jpg" class="img-rounded" alt="Cinque Terre" width="140px"; height="140px"; style="margin-top: 15%; margin-left: 35px;">								
+							<img src="{{$c[0]['pic2']}}" class="img-rounded" alt="Cinque Terre" width="140px"; height="140px"; style=" margin-left: 35px;">								
 							</div>
 							<form>
 								<div class="form-horizontal col-md-7">	
@@ -170,42 +156,67 @@
 									    <div class="form-group">
 											<label class="col-md-2 control-label" for="email">Name:</label>
 											<div class="col-md-8" style="margin-top: 6px;">
-												<b>Abhishek Dadhich</b>
+												<b>{{$c[0]['can2']}}</b>
 											</div>
 										</div>									
 																		
-										<!-- Won -->
-										<div class="form-group">
-											<label class="col-md-2 control-label" for="message">Won:</label>
-											<div class="col-md-8" style="margin-top: 6px;">
-												<b>5 Times</b>
-											</div>
-										</div>
-		                                <!-- Lost -->
-										<div class="form-group">
-											<label class="col-md-2 control-label" for="message">Lost:</label>
-											<div class="col-md-8" style="margin-top: 6px;">
-												<b>4 Times</b>
-											</div>
-										</div>
+										
 										<!-- Gender -->
 										<div class="form-group">
-											<label class="col-md-2 control-label" for="message">Gender:</label>
+											<label class="col-md-2 control-label" for="message">Email:</label>
 											<div class="col-md-8" style="margin-top: 6px;">
-												<b>Male</b>
+												<b>{{$c[0]['email2']}}</b>
 											</div>
 										</div>
 		                                <!-- Phone Number -->
 										<div class="form-group">
 											<label class="col-md-2 control-label" for="message">Bio:</label>
 											<div class="col-md-8" style="margin-top: 6px;">
-												<b>He has good behaviour also known as Baapu</b>
+												<b>{{$c[0]['bio2']}}</b>
 											</div>
 										</div>																			
 								</div>
 								<!-- Form actions -->
 								<div class="col-md-2" style="margin-top: 5%;">
-									<button type="submit" class="btn btn-md btn-primary">Vote</button>
+									<a href="/count/{{$c[0]['id']}}/vote2"><button type="button" class="btn btn-md btn-primary">Vote</button></a>
+								</div>
+							</form>
+						</div><!-- close row -->
+						<hr>
+                        <!-- 3rd can-->
+						<div class="row">
+							<div class="col-md-3">
+							<img src="{{$c[0]['pic3']}}" class="img-rounded" alt="Cinque Terre" width="140px"; height="140px"; style="margin-left: 35px;">								
+							</div>
+							<form>
+								<div class="form-horizontal col-md-7">	
+		                                <!-- Name-->
+									    <div class="form-group">
+											<label class="col-md-2 control-label" for="email">Name:</label>
+											<div class="col-md-8" style="margin-top: 6px;">
+												<b>{{$c[0]['can3']}}</b>
+											</div>
+										</div>									
+																		
+										
+										<!-- Gender -->
+										<div class="form-group">
+											<label class="col-md-2 control-label" for="message">Email:</label>
+											<div class="col-md-8" style="margin-top: 6px;">
+												<b>{{$c[0]['email3']}}</b>
+											</div>
+										</div>
+		                                <!-- Phone Number -->
+										<div class="form-group">
+											<label class="col-md-2 control-label" for="message">Bio:</label>
+											<div class="col-md-8" style="margin-top: 6px;">
+												<b>{{$c[0]['bio3']}}</b>
+											</div>
+										</div>																			
+								</div>
+								<!-- Form actions -->
+								<div class="col-md-2" style="margin-top: 5%;">
+									<a href="/count/{{$c[0]['id']}}/vote3"><button type="button" class="btn btn-md btn-primary">Vote</button></a>
 								</div>
 							</form>
 						</div><!-- close row -->	
@@ -213,18 +224,18 @@
 				</div><!-- panel -->
 			</div><!-- col -->
 		</div><!--/.row-->
-		
+
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-success">
 					<div class="panel-heading">
-						Rajya Sabha Election
+						{{$c[1]['election_name']}}
 					</div>
 					<div class="panel-body">
 						<!-- First candidate-->
 						<div class="row">
 							<div class="col-md-3">
-							<img src="abhi.jpg" class="img-rounded" alt="Cinque Terre" width="140px"; height="140px"; style="margin-top: 15%; margin-left: 35px;">
+							<img src="{{$c[1]['pic1']}}" class="img-rounded" alt="Cinque Terre" width="140px"; height="140px"; style="margin-left: 35px;">
 													
 							</div>
 							<form>
@@ -233,43 +244,29 @@
 									    <div class="form-group">
 											<label class="col-md-2 control-label" for="email">Name:</label>
 											<div class="col-md-8" style="margin-top: 6px;">
-												<b>Abhishek Dadhich</b>
+												<b>{{$c[1]['can1']}}</b>
 											</div>
 										</div>									
-																		
-										<!-- Won -->
-										<div class="form-group">
-											<label class="col-md-2 control-label" for="message">Won:</label>
-											<div class="col-md-8" style="margin-top: 6px;">
-												<b>5 Times</b>
-											</div>
-										</div>
-		                                <!-- Lost -->
-										<div class="form-group">
-											<label class="col-md-2 control-label" for="message">Lost:</label>
-											<div class="col-md-8" style="margin-top: 6px;">
-												<b>4 Times</b>
-											</div>
-										</div>
+										
 										<!-- Gender -->
 										<div class="form-group">
-											<label class="col-md-2 control-label" for="message">Gender:</label>
+											<label class="col-md-2 control-label" for="message">Email:</label>
 											<div class="col-md-8" style="margin-top: 6px;">
-												<b>Male</b>
+												<b>{{$c[1]['email1']}}</b>
 											</div>
 										</div>
 		                                <!-- Phone Number -->
 										<div class="form-group">
 											<label class="col-md-2 control-label" for="message">Bio:</label>
 											<div class="col-md-8" style="margin-top: 6px;">
-												<b>He has good behaviour also known as Baapu</b>
+												<b>{{$c[1]['bio1']}}</b>
 											</div>
 										</div>
 																											
 								</div>
 								<!-- Form actions -->
 								<div class="col-md-2" style="margin-top: 5%;">
-									<button type="submit" class="btn btn-md btn-primary">Vote</button>
+									<a href="/count/{{$c[1]['id']}}/vote1"><button type="button" class="btn btn-md btn-primary">Vote</button></a>
 								</div>
 							</form>
 						</div><!-- close row -->
@@ -277,7 +274,45 @@
 						<!-- second Candidate-->
 						<div class="row">
 							<div class="col-md-3">
-							<img src="abhi.jpg" class="img-rounded" alt="Cinque Terre" width="140px"; height="140px"; style="margin-top: 15%; margin-left: 35px;">								
+							<img src="{{$c[1]['pic2']}}" class="img-rounded" alt="Cinque Terre" width="140px"; height="140px"; style="margin-left: 35px;">								
+							</div>
+							<form method="post">
+								<div class="form-horizontal col-md-7">	
+		                                <!-- Name-->
+									    <div class="form-group">
+											<label class="col-md-2 control-label" for="email">Name:</label>
+											<div class="col-md-8" style="margin-top: 6px;">
+												<b>{{$c[1]['can2']}}</b>
+											</div>
+										</div>									
+																		
+										
+										<!-- Gender -->
+										<div class="form-group">
+											<label class="col-md-2 control-label" for="message">Email:</label>
+											<div class="col-md-8" style="margin-top: 6px;">
+												<b>{{$c[1]['email2']}}</b>
+											</div>
+										</div>
+		                                <!-- Phone Number -->
+										<div class="form-group">
+											<label class="col-md-2 control-label" for="message">Bio:</label>
+											<div class="col-md-8" style="margin-top: 6px;">
+												<b>{{$c[1]['bio2']}}</b>
+											</div>
+										</div>																			
+								</div>
+								<!-- Form actions -->
+								<div class="col-md-2" style="margin-top: 5%;">
+									<a href="/count/{{$c[1]['id']}}/vote2"><button type="button" class="btn btn-md btn-primary">Vote</button></a>
+								</div>
+							</form>
+						</div><!-- close row -->
+						<hr>
+                        <!-- 3rd can-->
+						<div class="row">
+							<div class="col-md-3">
+							<img src="{{$c[1]['pic3']}}" class="img-rounded" alt="Cinque Terre" width="140px"; height="140px"; style="margin-left: 35px;">								
 							</div>
 							<form>
 								<div class="form-horizontal col-md-7">	
@@ -285,42 +320,29 @@
 									    <div class="form-group">
 											<label class="col-md-2 control-label" for="email">Name:</label>
 											<div class="col-md-8" style="margin-top: 6px;">
-												<b>Abhishek Dadhich</b>
+												<b>{{$c[1]['can3']}}</b>
 											</div>
 										</div>									
 																		
-										<!-- Won -->
-										<div class="form-group">
-											<label class="col-md-2 control-label" for="message">Won:</label>
-											<div class="col-md-8" style="margin-top: 6px;">
-												<b>5 Times</b>
-											</div>
-										</div>
-		                                <!-- Lost -->
-										<div class="form-group">
-											<label class="col-md-2 control-label" for="message">Lost:</label>
-											<div class="col-md-8" style="margin-top: 6px;">
-												<b>4 Times</b>
-											</div>
-										</div>
+										
 										<!-- Gender -->
 										<div class="form-group">
-											<label class="col-md-2 control-label" for="message">Gender:</label>
+											<label class="col-md-2 control-label" for="message">Email:</label>
 											<div class="col-md-8" style="margin-top: 6px;">
-												<b>Male</b>
+												<b>{{$c[1]['email3']}}</b>
 											</div>
 										</div>
 		                                <!-- Phone Number -->
 										<div class="form-group">
 											<label class="col-md-2 control-label" for="message">Bio:</label>
 											<div class="col-md-8" style="margin-top: 6px;">
-												<b>He has good behaviour also known as Baapu</b>
+												<b>{{$c[1]['bio3']}}</b>
 											</div>
 										</div>																			
 								</div>
 								<!-- Form actions -->
 								<div class="col-md-2" style="margin-top: 5%;">
-									<button type="submit" class="btn btn-md btn-primary">Vote</button>
+									<a href="/count/{{$c[1]['id']}}/vote3"><button type="button" class="btn btn-md btn-primary">Vote</button></a>
 								</div>
 							</form>
 						</div><!-- close row -->	
@@ -328,7 +350,9 @@
 				</div><!-- panel -->
 			</div><!-- col -->
 		</div><!--/.row-->
-		
+
+	
+				
 		
 		
 	</div>	<!--/.main-->

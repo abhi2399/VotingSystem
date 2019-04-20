@@ -14,6 +14,9 @@ use App\countings;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Database\Eloquent\Builder;
+use App\Http\Middleware\checklogin;
+
+use Mail;
 
 class ApiController extends Controller
 {
@@ -85,10 +88,22 @@ class ApiController extends Controller
     }
     public function old(){
     	$olderelection =olderelections::all();
-    	$newelection =newelections::all();
+    	$newelection =countings::all();
+
     	
     	return view('/admin',compact('olderelection','newelection'));
     }
+     
+
+     public function ele()
+     {
+        $c = countings::all()->toArray();
+        // dd($c[0]['election_name']);
+         
+        
+        return view('/election',compact('c'));
+
+     }
 
     public function loginvoter(Request $request)
     {   
@@ -131,6 +146,105 @@ class ApiController extends Controller
         {
             return redirect('/login');
         }
+    }
+
+    public function incrementvote($id,$vote)
+    {
+        $a=countings::find($id);
+        if($vote == 'vote1')
+        {
+            DB::update('update countings set vote1 =? where id =?',[$a[$vote]+1,$id]);
+            $email=session('name')[0]['email'];
+            $name=$a->can1;
+            $data = array('name'=>session('name')[0]['name'],'mail'=>$email);
+      Mail::send('mail', $data, function($message) use ($email){
+         $message->to($email, 'Tutorials Point')->subject
+            ('Casted Vote');
+         $message->from('idadhichabhi@gmail.com','VotingSystem');
+      });
+     
+        }
+
+        else if($vote == 'vote2')
+        {
+            DB::update('update countings set vote2 =? where id =?',[$a[$vote]+1,$id]);
+            $email=session('name')[0]['email'];
+
+            $data = array('name'=>session('name')[0]['name'],'mail'=>$email);
+      Mail::send('mail', $data, function($message) use ($email){
+         $message->to($email, 'Tutorials Point')->subject
+            ('Casted Vote');
+         $message->from('idadhichabhi@gmail.com','VotingSystem');
+      });
+      
+        }
+        else
+        {
+            DB::update('update countings set vote3 =? where id =?',[$a[$vote]+1,$id]);
+            $email=session('name')[0]['email'];
+
+            $data = array('name'=>session('name')[0]['name'],'mail'=>$email);
+      Mail::send('mail', $data, function($message) use ($email){
+         $message->to($email, 'Tutorials Point')->subject
+            ('Casted Vote');
+         $message->from('idadhichabhi@gmail.com','VotingSystem');
+      });
+     
+        }
+
+        return redirect('index');
+
+       
+    }
+
+    public function close($id)
+    {
+        $a=countings::find($id);
+        $v1=$a->vote1;
+          $v2=$a->vote2;
+            $v3=$a->vote3;
+            $win="";
+            $na="";
+            $bio="";
+            if($v1>$v2){
+                if($v1>$v3){
+                        $win=$v1;
+                        $na=$a->can1;
+                        $bio=$a->bio1;
+                }
+                else{
+                    
+                        $win=$v3;
+                        $na=$a->can3;
+                        $bio=$a->bio3;
+                }
+
+            }
+            else{
+                 if($v2>$v3){
+                        $win=$v2;
+                        $na=$a->can2;
+                        $bio=$a->bio2;
+                }
+                else{
+                   
+                        $win=$v3;
+                        $na=$a->can3;
+                        $bio=$a->bio3;
+                
+                }
+            }
+            $voter=new olderelections();
+
+        $voter->id = $id;
+        $voter->name = $a->election_name;
+        $voter->winnername=$na;
+        $voter->votes = $win;
+        $voter->bio= $bio;
+       
+        $voter->save();
+          countings::where('id',$id)->delete();
+          return redirect('/default.admin');
     }
   
 }

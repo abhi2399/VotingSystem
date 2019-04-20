@@ -61,10 +61,10 @@
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
-				<img class="pic img-responsive" src="{{$name[0]['pic']}}">
+				<img class="pic img-responsive" src="{{session('name')[0]['pic']}}">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">{{$name[0]['name']}}</div>
+				<div class="profile-usertitle-name">{{session('name')[0]['name']}}</div>
 				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 			</div>
 			<div class="clear"></div>

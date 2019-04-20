@@ -83,20 +83,12 @@
 						@foreach($newelection as $shownewelection)
 						<div class="row">
 							<div class="col-md-3 col-sm-3 ">
-											<b>{{$shownewelection->name}}</b>			
+											<b>{{$shownewelection->election_name}}</b>			
 							</div>
 							
-								<div class="form-horizontal col-md-7 col-sm-7">	
-		                                <!-- Name-->
-									    <div class="form-group">
-											<label class="col-md-2 col-sm-2 control-label" style="margin-top: -10px;">Date:</label>
-											<div class="col-md-8 col-sm-8" style="margin-top: -3px;">
-												<b>{{$shownewelection->date}}</b>
-											</div>
-										</div>																				
-								</div>
+								
 								<div class="col-ml-2">
-									<a href="#" ><em class="fa fa-lg fa-close"></em></a>
+									<a href="/close/{{$shownewelection->id}}" ><em class="fa fa-lg fa-close"></em></a>
 								</div>
 						</div><!-- close row -->
 						
